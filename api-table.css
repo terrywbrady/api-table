@@ -1,0 +1,11 @@
+table {border-collapse: collapse;border-right:solid thin black;}
+table td, table th {border: thin solid black; padding: 4px;}
+thead tr {background-color: #EEEEEE;}
+tr:nth-child(1n):hover td, tr:nth-child(1n):hover th {background-color: #DDDDDD;}
+tbody tr:nth-child(2n) td {border-bottom: thin dotted black;}
+tbody tr td {border-top: thin dotted black;}
+tbody tr:nth-child(2n) td {background-color: #EEFFEE;}
+thead tr td {background-color: #EEEEFF;}
+td.num {text-align: right;}
+td.link {text-decoration: underline; color: blue;}
+td, th {width: 100px;}
