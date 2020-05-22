@@ -28,6 +28,7 @@ function createTable(headers, types, data) {
       tr.append(createCell(data[r][c], types[c], false));
     }
   }
+  sorttable.makeSortable($("#data-table")[0]);
 }
 
 function createCell(v, type, isHeader) {
