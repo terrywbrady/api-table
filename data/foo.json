@@ -1,0 +1,17 @@
+{
+  "headers": ["cat", "dog"],
+  "types": ["", "num"],
+  "data": [
+    ["apple", 3],
+    ["banana", 33],
+    ["cantaloupe", 0],
+    ["dataType", 11],
+    ["fig", 3],
+    ["grapefruit", 3],
+    ["habanero", 3],
+    ["kiwi", 11.33],
+    ["lemon", 3],
+    ["mullberry", 3],
+    ["necarine", 0]
+  ]
+}

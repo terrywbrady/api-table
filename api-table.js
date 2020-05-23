@@ -1,17 +1,44 @@
 $(document).ready(function(){
-  createTable(
-    ["cat", "dog", "bird"],
-    ["", "num", "foo"],
-    [
-      [1, 2, 3],
-      [1, 2, 3],
-      [1, 2, 3],
-      [1, 2, 'cow'],
-      [1, 2, 'bird'],
-      [4, 5, 6]
-    ]
-  );
+  var queries = getParams();
+  var file = ('json' in queries) ? queries['json'] : '';
+  if (file != '') {
+    showData(file);
+    $("#menu").hide();
+  } else {
+    $("#menu").show();
+  }
 });
+
+function getParams(){
+  var queries = {};
+  if (document.location.search == "") {
+    return queries;
+  }
+  $.each(document.location.search.substr(1).split('&'),function(c,q){
+    var i = q.split('=');
+    queries[i[0].toString()] = i[1].toString();
+  });
+  return queries;
+}
+
+
+function showData(file) {
+  var url = "data/" + file + ".json";
+  $.ajax({
+    dataType: "json",
+    url: url,
+    success: function(data) {
+      createTable(
+        data.headers,
+        data.types,
+        data.data
+      )
+    },
+    complete: function(xhr, status) {
+      //alert(status);
+    }
+  });
+}
 
 function createTable(headers, types, data) {
   $("#data-table")
@@ -40,7 +67,7 @@ function createCell(v, type, isHeader) {
 
 function format(cell, v, type) {
   if (type == 'foo') {
-    $("<a href='#foo'/>").text(v).appendTo(cell);
+    $("<a href='?json=foo'/>").text(v).appendTo(cell);
   } else {
     cell.text(v);
   }
