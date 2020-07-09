@@ -1,8 +1,12 @@
 $(document).ready(function(){
   var queries = getParams();
   var file = ('json' in queries) ? queries['json'] : '';
+  var url = ('url' in queries) ? queries['url'] : '';
   if (file != '') {
     showData(file);
+    $("#menu").hide();
+  } else if (url != '') {
+    showUrl(url);
     $("#menu").hide();
   } else {
     $("#menu").show();
@@ -21,9 +25,12 @@ function getParams(){
   return queries;
 }
 
-
 function showData(file) {
   var url = "data/" + file + ".json";
+  showUrl(url);
+}
+
+function showUrl(url) {
   $.ajax({
     dataType: "json",
     url: url,
