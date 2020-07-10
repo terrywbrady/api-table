@@ -2,6 +2,8 @@ $(document).ready(function(){
   var queries = getParams();
   var file = ('json' in queries) ? queries['json'] : '';
   var url = ('url' in queries) ? queries['url'] : '';
+  var url = ('encurl' in queries) ? decodeURIComponent(queries['encurl']) : url;
+
   if (file != '') {
     showData(file);
     $("#menu").hide();
